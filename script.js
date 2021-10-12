@@ -10,8 +10,7 @@ const displayMessage = (message) => {
 
 document.querySelector('.check').addEventListener('click', () => {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
-
+  
   if (!guess) {
     displayMessage('No number!');
   } else if (guess === secretNum) {
