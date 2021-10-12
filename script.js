@@ -1,5 +1,3 @@
-'use strict';
-
 let secretNum = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
@@ -10,7 +8,6 @@ const displayMessage = (message) => {
 
 document.querySelector('.check').addEventListener('click', () => {
   const guess = Number(document.querySelector('.guess').value);
-  
   if (!guess) {
     displayMessage('No number!');
   } else if (guess === secretNum) {
@@ -27,7 +24,7 @@ document.querySelector('.check').addEventListener('click', () => {
   } else if (guess !== secretNum) {
     if (score > 1) {
       displayMessage(guess > secretNum ? 'Too high!' : 'Too low!');
-      score--;
+      score -= 1;
       document.querySelector('.score').textContent = score;
     } else {
       displayMessage('You lost the game!');
