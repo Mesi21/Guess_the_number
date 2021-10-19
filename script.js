@@ -6,7 +6,7 @@ const currScore = document.querySelector('.score');
 const num = document.querySelector('.number');
 const body = document.querySelector('body');
 const currGuess = document.querySelector('.guess');
-const checkBtn = document.querySelector('.check')
+const checkBtn = document.querySelector('.check');
 const displayMsg = document.querySelector('.message');
 const againBtn = document.querySelector('.again');
 const headerEle = document.querySelector('header');
@@ -27,7 +27,7 @@ const correctNum = () => {
   points.style.fontSize = '4rem';
   checkBtn.style.display = 'none';
   num.style.width = '30rem';
-}
+};
 
 checkBtn.addEventListener('click', () => {
   const guess = Number(currGuess.value);
@@ -64,6 +64,6 @@ const resetBoard = () => {
   headerEle.style.color = '#fff';
   num.style.width = '15rem';
   checkBtn.style.display = 'block';
-}
+};
 
 againBtn.addEventListener('click', resetBoard);
