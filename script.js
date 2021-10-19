@@ -9,10 +9,25 @@ const currGuess = document.querySelector('.guess');
 const checkBtn = document.querySelector('.check')
 const displayMsg = document.querySelector('.message');
 const againBtn = document.querySelector('.again');
+const headerEle = document.querySelector('header');
 
 const displayMessage = (message) => {
   displayMsg.textContent = message;
 };
+
+const correctNum = () => {
+  num.textContent = secretNum;
+  body.style.backgroundColor = '#60b347';
+  body.style.color = '#000';
+  points.style.color = '#000';
+  points.style.backgroundColor = '#ccc';
+  points.style.textAlign = 'center';
+  points.style.padding = '20px';
+  points.style.borderRadius = '5px';
+  points.style.fontSize = '4rem';
+  checkBtn.style.display = 'none';
+  num.style.width = '30rem';
+}
 
 checkBtn.addEventListener('click', () => {
   const guess = Number(currGuess.value);
@@ -20,18 +35,7 @@ checkBtn.addEventListener('click', () => {
     displayMessage('No number!');
   } else if (guess === secretNum) {
     displayMessage('Correct Number!');
-    num.textContent = secretNum;
-
-    body.style.backgroundColor = '#60b347';
-    body.style.color = '#000';
-    points.style.color = '#000';
-    points.style.backgroundColor = '#ccc';
-    points.style.textAlign = 'center';
-    points.style.padding = '20px';
-    points.style.borderRadius = '5px';
-    points.style.fontSize = '4rem';
-    checkBtn.style.display = 'none';
-    num.style.width = '30rem';
+    correctNum();
 
     if (score > highscore) {
       highscore = score;
@@ -49,16 +53,17 @@ checkBtn.addEventListener('click', () => {
   }
 });
 
-againBtn.addEventListener('click', () => {
+const resetBoard = () => {
   score = 20;
   secretNum = Math.trunc(Math.random() * 20) + 1;
-
   displayMessage('Start guessing...');
   currScore.textContent = score;
   num.textContent = '?';
   currGuess.value = '';
-
   body.style.backgroundColor = '#222';
+  headerEle.style.color = '#fff';
   num.style.width = '15rem';
   checkBtn.style.display = 'block';
-});
+}
+
+againBtn.addEventListener('click', resetBoard);
